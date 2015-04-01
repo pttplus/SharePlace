@@ -14,7 +14,7 @@
 #import "FBSendButton.h"
 #import "UIAlertView+Extension.h"
 
-@interface ViewController ()
+@interface ViewController () <GMSMapViewDelegate>
 @property (weak, nonatomic) IBOutlet FBSendButton *fbSendButton;
 @property (strong, nonatomic) IBOutlet UIView *mapCanvas;
 @property (strong, nonatomic) GMSMarker *marker;
@@ -48,6 +48,24 @@
 
 //    self.placeSearch.delegate = self;
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (BOOL)didTapMyLocationButtonForMapView:(GMSMapView *)mapView
+{
+    [self removeMapMarker];
+    
+    return NO;
+}
+
+- (void)mapView:(GMSMapView *)mapView didTapAtCoordinate:(CLLocationCoordinate2D)coordinate
+{
+    [self removeMapMarker];
+    
+    self.marker = [GMSMarker markerWithPosition:coordinate];
+    
+    self.marker.map = mapView_;
+    
+    mapView_.selectedMarker = self.marker;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -102,6 +120,8 @@
 
     mapView_ = [GMSMapView mapWithFrame:self.mapCanvas.bounds camera:camera];
 
+        mapView_.delegate = self;
+        
     mapView_.settings.compassButton = YES;
 
     mapView_.settings.myLocationButton = YES;
