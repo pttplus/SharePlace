@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import "LocationPermissionChecker.h"
+#import "Harpy.h"
 
 @interface AppDelegate ()
 
@@ -16,6 +17,20 @@
 
 @implementation AppDelegate{
     id services_;
+}
+
+- (void)setHarpyForCheckingAppVersion
+{
+    // Set the App ID for your app
+    [[Harpy sharedInstance] setAppID:@"918374674"];
+    
+    [[Harpy sharedInstance] setAppName:@"SharePlace"];
+    
+    // Set the UIViewController that will present an instance of UIAlertController
+    [[Harpy sharedInstance] setPresentingViewController:self.window.rootViewController];
+    
+    // Perform check for new version of your app
+    [[Harpy sharedInstance] checkVersion];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
