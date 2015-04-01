@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1859F6571ACC26D700A070D8 /* FBSendButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1859F6561ACC26D700A070D8 /* FBSendButton.m */; };
 		6759F2F91ACAD8D600D5A93B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6759F2F81ACAD8D600D5A93B /* main.m */; };
 		6759F2FC1ACAD8D600D5A93B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6759F2FB1ACAD8D600D5A93B /* AppDelegate.m */; };
 		6759F2FF1ACAD8D600D5A93B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6759F2FE1ACAD8D600D5A93B /* ViewController.m */; };
@@ -29,6 +30,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1859F6551ACC26D700A070D8 /* FBSendButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBSendButton.h; sourceTree = "<group>"; };
+		1859F6561ACC26D700A070D8 /* FBSendButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBSendButton.m; sourceTree = "<group>"; };
 		3AD0ED8F6A9B2956F61764D7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		3CDD27507EE39743644C44F1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6759F2F31ACAD8D600D5A93B /* SharePlace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SharePlace.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,6 +152,8 @@
 			children = (
 				6759F2FD1ACAD8D600D5A93B /* ViewController.h */,
 				6759F2FE1ACAD8D600D5A93B /* ViewController.m */,
+				1859F6551ACC26D700A070D8 /* FBSendButton.h */,
+				1859F6561ACC26D700A070D8 /* FBSendButton.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -318,6 +323,7 @@
 				6759F2FF1ACAD8D600D5A93B /* ViewController.m in Sources */,
 				6759F2FC1ACAD8D600D5A93B /* AppDelegate.m in Sources */,
 				6759F2F91ACAD8D600D5A93B /* main.m in Sources */,
+				1859F6571ACC26D700A070D8 /* FBSendButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

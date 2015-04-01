@@ -11,10 +11,10 @@
 #import "SPGooglePlacesAutocomplete.h"
 #import <FBSDKShareKit/FBSDKShareKit.h>
 #import <FBSDKMessengerShareKit/FBSDKMessengerShareKit.h>
+#import "FBSendButton.h"
 
 @interface ViewController ()
-@property (weak, nonatomic) IBOutlet UIButton *sendButton;
-
+@property (weak, nonatomic) IBOutlet FBSendButton *fbSendButton;
 @property (strong, nonatomic) IBOutlet UIView *mapCanvas;
 @end
 
@@ -41,6 +41,7 @@
     searchQuery = [[SPGooglePlacesAutocompleteQuery alloc] initWithApiKey:@"AIzaSyATnUc4Jf6VRYfcQz6D_6d1VIbeuY570Ac"];
     shouldBeginEditing = YES;
 
+    [self.fbSendButton setTarget:self action:@selector(sendToFacebook:)];
     
 //    self.placeSearch.delegate = self;
     // Do any additional setup after loading the view, typically from a nib.
