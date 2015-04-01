@@ -16,6 +16,7 @@
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet FBSendButton *fbSendButton;
 @property (strong, nonatomic) IBOutlet UIView *mapCanvas;
+@property (strong, nonatomic) GMSMarker *marker;
 @end
 
 @implementation ViewController{
@@ -36,7 +37,7 @@
     
     self.navigationItem.leftBarButtonItem = backButton;
     
-    self.searchDisplayController.searchBar.placeholder = @"Search or Address";
+    self.searchDisplayController.searchBar.placeholder = @"Place or Address";
     
     searchQuery = [[SPGooglePlacesAutocompleteQuery alloc] initWithApiKey:@"AIzaSyATnUc4Jf6VRYfcQz6D_6d1VIbeuY570Ac"];
     shouldBeginEditing = YES;
@@ -57,6 +58,8 @@
 }
 
 - (IBAction)sendToFacebook:(id)sender {
+    
+    [self recenterMapToPlacemark];
     
     if ([FBSDKMessengerSharer messengerPlatformCapabilities] & FBSDKMessengerPlatformCapabilityImage) {
         
@@ -144,17 +147,14 @@
 #pragma mark -
 #pragma mark UITableViewDelegate
 
-- (void)recenterMapToPlacemark:(CLPlacemark *)placemark {
-    /*MKCoordinateRegion region;
-    MKCoordinateSpan span;
+- (void)recenterMapToPlacemark {
     
-    span.latitudeDelta = 0.02;
-    span.longitudeDelta = 0.02;
+    CGPoint point = [mapView_.projection pointForCoordinate:self.marker.position];
+    //    point.x = point.x + 100;
+    GMSCameraUpdate *camera = [GMSCameraUpdate setTarget:[mapView_.projection coordinateForPoint:point]];
     
-    region.span = span;
-    region.center = placemark.location.coordinate;
+    [mapView_ animateWithCameraUpdate:camera];
     
-    [self.mapView setRegion:region];*/
 }
 
 - (void)addPlacemarkAnnotationToMap:(CLPlacemark *)placemark addressString:(NSString *)address {
@@ -181,24 +181,22 @@
     marker.snippet = @"Population: 4,605,992";
     marker.position = placemark.location.coordinate;*/
     
-    GMSMarker *marker = [GMSMarker markerWithPosition:placemark.location.coordinate];
-    marker.title = address;
-//    marker.infoWindowAnchor = CGPointMake(0.5, 0.5);
-    marker.map = mapView_;
+    if(self.marker){
+        self.marker.map = nil;
+    }
     
-    mapView_.selectedMarker = marker;
+    self.marker = [GMSMarker markerWithPosition:placemark.location.coordinate];
+    
+    self.marker.title = address;
+//    marker.infoWindowAnchor = CGPointMake(0.5, 0.5);
+    self.marker.map = mapView_;
+    
+    mapView_.selectedMarker = self.marker;
     
 //    [mapView_ se
     
-    CGPoint point = [mapView_.projection pointForCoordinate:marker.position];
-//    point.x = point.x + 100;
-    GMSCameraUpdate *camera =
-    [GMSCameraUpdate setTarget:[mapView_.projection coordinateForPoint:point]];
-    [mapView_ animateWithCameraUpdate:camera];
     
     
-//    _sydneyMarker.flat = NO;
-//    _sydneyMarker.rotation = 30.0;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -214,8 +212,11 @@
                                                   otherButtonTitles:nil, nil];
             [alert show];
         } else if (placemark) {
+            
             [self addPlacemarkAnnotationToMap:placemark addressString:addressString];
-//            [self recenterMapToPlacemark:placemark];
+            
+            [self recenterMapToPlacemark];
+            
             // ref: https://github.com/chenyuan/SPGooglePlacesAutocomplete/issues/10
             [self.searchDisplayController setActive:NO];
             [self.searchDisplayController.searchResultsTableView deselectRowAtIndexPath:indexPath animated:YES];
