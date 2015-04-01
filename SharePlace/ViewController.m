@@ -13,10 +13,11 @@
 #import <FBSDKMessengerShareKit/FBSDKMessengerShareKit.h>
 #import "FBSendButton.h"
 
-@interface ViewController ()
+@interface ViewController ()<GMSMapViewDelegate>
 @property (weak, nonatomic) IBOutlet FBSendButton *fbSendButton;
 @property (strong, nonatomic) IBOutlet UIView *mapCanvas;
 @property (strong, nonatomic) GMSMarker *marker;
+@property (strong, nonatomic) BOOL isMove;
 @end
 
 @implementation ViewController{
@@ -119,6 +120,27 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark -
+#pragma mark GMSMapViewDelegate
+
+-(void)mapView:(GMSMapView *)mapView willMove:(BOOL)gesture{
+    NSLog(@"willMove");
+    self.isMove = YES;
+    
+}
+
+-(void)mapView:(GMSMapView *)mapView idleAtCameraPosition:(GMSCameraPosition *)position{
+    
+    
+    NSLog(@"idleAtCameraPosition");
+    self.isMove = NO;
+}
+
+-(BOOL)didTapMyLocationButtonForMapView:(GMSMapView *)mapView{
+    NSLog(@"!!didTapMyLocationButtonForMapView");
+    [self removeMapMarker];
+    return NO;
+}
 
 #pragma mark -
 #pragma mark UITableViewDataSource
@@ -146,6 +168,14 @@
 
 #pragma mark -
 #pragma mark UITableViewDelegate
+
+- (void)removeMapMarker {
+    
+    if(self.marker){
+        self.marker.map = nil;
+    }
+    
+}
 
 - (void)recenterMapToPlacemark {
     
@@ -180,10 +210,8 @@
     marker.title = @"Sydney";
     marker.snippet = @"Population: 4,605,992";
     marker.position = placemark.location.coordinate;*/
+    [self removeMapMarker];
     
-    if(self.marker){
-        self.marker.map = nil;
-    }
     
     self.marker = [GMSMarker markerWithPosition:placemark.location.coordinate];
     
