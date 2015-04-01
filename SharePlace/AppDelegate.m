@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <GoogleMaps/GoogleMaps.h>
+#import "LocationPermissionChecker.h"
 
 @interface AppDelegate ()
 
@@ -17,13 +18,11 @@
     id services_;
 }
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
     [GMSServices provideAPIKey:@"AIzaSyAU_S9_5DYlOc5SdMQ_YyYuNKfANc4zYCU"];
     services_ = [GMSServices sharedServices];
-    
     
     return YES;
 }
@@ -44,6 +43,8 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    [LocationPermissionChecker check];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

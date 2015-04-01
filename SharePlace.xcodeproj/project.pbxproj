@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1859F6571ACC26D700A070D8 /* FBSendButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1859F6561ACC26D700A070D8 /* FBSendButton.m */; };
+		1859F65B1ACC329D00A070D8 /* UIAlertView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1859F65A1ACC329D00A070D8 /* UIAlertView+Extension.m */; };
+		1859F65E1ACC34E100A070D8 /* LocationPermissionChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 1859F65D1ACC34E100A070D8 /* LocationPermissionChecker.m */; };
 		6759F2F91ACAD8D600D5A93B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6759F2F81ACAD8D600D5A93B /* main.m */; };
 		6759F2FC1ACAD8D600D5A93B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6759F2FB1ACAD8D600D5A93B /* AppDelegate.m */; };
 		6759F2FF1ACAD8D600D5A93B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6759F2FE1ACAD8D600D5A93B /* ViewController.m */; };
@@ -32,6 +34,10 @@
 /* Begin PBXFileReference section */
 		1859F6551ACC26D700A070D8 /* FBSendButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBSendButton.h; sourceTree = "<group>"; };
 		1859F6561ACC26D700A070D8 /* FBSendButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBSendButton.m; sourceTree = "<group>"; };
+		1859F6591ACC329D00A070D8 /* UIAlertView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Extension.h"; sourceTree = "<group>"; };
+		1859F65A1ACC329D00A070D8 /* UIAlertView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Extension.m"; sourceTree = "<group>"; };
+		1859F65C1ACC34E100A070D8 /* LocationPermissionChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationPermissionChecker.h; sourceTree = "<group>"; };
+		1859F65D1ACC34E100A070D8 /* LocationPermissionChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationPermissionChecker.m; sourceTree = "<group>"; };
 		3AD0ED8F6A9B2956F61764D7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		3CDD27507EE39743644C44F1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6759F2F31ACAD8D600D5A93B /* SharePlace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SharePlace.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,8 +147,12 @@
 		6759F31D1ACADB8000D5A93B /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				1859F6591ACC329D00A070D8 /* UIAlertView+Extension.h */,
+				1859F65A1ACC329D00A070D8 /* UIAlertView+Extension.m */,
 				6759F31F1ACADBCD00D5A93B /* Storyboards */,
 				6759F31E1ACADB8800D5A93B /* ViewControllers */,
+				1859F65C1ACC34E100A070D8 /* LocationPermissionChecker.h */,
+				1859F65D1ACC34E100A070D8 /* LocationPermissionChecker.m */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -321,9 +331,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				6759F2FF1ACAD8D600D5A93B /* ViewController.m in Sources */,
+				1859F65E1ACC34E100A070D8 /* LocationPermissionChecker.m in Sources */,
 				6759F2FC1ACAD8D600D5A93B /* AppDelegate.m in Sources */,
 				6759F2F91ACAD8D600D5A93B /* main.m in Sources */,
 				1859F6571ACC26D700A070D8 /* FBSendButton.m in Sources */,
+				1859F65B1ACC329D00A070D8 /* UIAlertView+Extension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

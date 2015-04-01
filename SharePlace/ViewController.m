@@ -12,6 +12,7 @@
 #import <FBSDKShareKit/FBSDKShareKit.h>
 #import <FBSDKMessengerShareKit/FBSDKMessengerShareKit.h>
 #import "FBSendButton.h"
+#import "UIAlertView+Extension.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet FBSendButton *fbSendButton;
@@ -45,6 +46,11 @@
     
 //    self.placeSearch.delegate = self;
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
 }
 
 - (IBAction)Back
