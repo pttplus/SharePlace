@@ -32,7 +32,7 @@
     
     self.title = @"Share Your Location";
     
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(Back)];
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"MessengerIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(Back)];
     
     self.navigationItem.leftBarButtonItem = backButton;
     
