@@ -22,7 +22,7 @@
 - (void)setHarpyForCheckingAppVersion
 {
     // Set the App ID for your app
-    [[Harpy sharedInstance] setAppID:@"918374674"];
+    [[Harpy sharedInstance] setAppID:@"981915503"];
     
     [[Harpy sharedInstance] setAppName:@"SharePlace"];
     
@@ -38,6 +38,8 @@
     
     [GMSServices provideAPIKey:@"AIzaSyAU_S9_5DYlOc5SdMQ_YyYuNKfANc4zYCU"];
     services_ = [GMSServices sharedServices];
+    
+    [self setHarpyForCheckingAppVersion];
     
     return YES;
 }
