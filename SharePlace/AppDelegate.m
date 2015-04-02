@@ -8,10 +8,18 @@
 
 #import "AppDelegate.h"
 #import <GoogleMaps/GoogleMaps.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+
 #import "LocationPermissionChecker.h"
 #import "Harpy.h"
+#import "GCNetworkReachability.h"
 
-@interface AppDelegate ()
+@interface AppDelegate ()<FBSDKMessengerURLHandlerDelegate>
+    @property (strong, nonatomic) FBSDKMessengerURLHandler *_messengerUrlHandler;
+    @property (strong, nonatomic) GCNetworkReachability *reachability;
+
+// shareMode holds state indicating which flow the user is in.
+// Return the corresponding FBSDKMessengerContext based on that state.
 
 @end
 
@@ -36,10 +44,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    [GMSServices provideAPIKey:@"AIzaSyAU_S9_5DYlOc5SdMQ_YyYuNKfANc4zYCU"];
+    [GMSServices provideAPIKey:@"AIzaSyDkhoUj-aNxrzKRsxXWjDTT35qUJBGd_mE"];
     services_ = [GMSServices sharedServices];
     
     [self setHarpyForCheckingAppVersion];
+    
+    self._messengerUrlHandler = [[FBSDKMessengerURLHandler alloc] init];
+    
+    self._messengerUrlHandler.delegate = self;
     
     return YES;
 }
@@ -61,11 +73,50 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     
+    self.reachability = [GCNetworkReachability reachabilityWithHostName:@"www.google.com"];
+    
+    [self.reachability startMonitoringNetworkReachabilityWithHandler:^(GCNetworkReachabilityStatus status) {
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network Connect Required"
+                                                        message:@"Check your internet connection."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil, nil];
+        
+        // this block is called on the main thread
+        switch (status) {
+            case GCNetworkReachabilityStatusNotReachable:
+                
+                [alert show];
+                
+                break;
+            case GCNetworkReachabilityStatusWWAN:
+            case GCNetworkReachabilityStatusWiFi:
+                // e.g. start syncing...
+                break;
+        }
+    }];
+    
+    [FBSDKAppEvents activateApp];
+    
     [LocationPermissionChecker check];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+
+    // Check if the handler knows what to do with this url
+    if ([self._messengerUrlHandler canOpenURL:url sourceApplication:sourceApplication]) {
+        // Handle the url
+        [self._messengerUrlHandler openURL:url sourceApplication:sourceApplication];
+    }
+    
+    return YES;
+}
+
 
 @end

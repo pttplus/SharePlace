@@ -18,6 +18,7 @@
 		6759F3071ACAD8D600D5A93B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6759F3051ACAD8D600D5A93B /* LaunchScreen.xib */; };
 		6759F3131ACAD8D600D5A93B /* SharePlaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6759F3121ACAD8D600D5A93B /* SharePlaceTests.m */; };
 		67C085F11ACB16380044D0C1 /* FBSDKMessengerShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67C085F01ACB16380044D0C1 /* FBSDKMessengerShareKit.framework */; };
+		67C085F31ACC850F0044D0C1 /* Screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 67C085F21ACC850F0044D0C1 /* Screen.png */; };
 		AC62AC6F058DE75AD4B7FE72 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CDD27507EE39743644C44F1 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,7 @@
 		6759F3111ACAD8D600D5A93B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6759F3121ACAD8D600D5A93B /* SharePlaceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SharePlaceTests.m; sourceTree = "<group>"; };
 		67C085F01ACB16380044D0C1 /* FBSDKMessengerShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKMessengerShareKit.framework; sourceTree = "<group>"; };
+		67C085F21ACC850F0044D0C1 /* Screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screen.png; sourceTree = "<group>"; };
 		D0527D4C99DB6F8A549964D6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,6 +112,7 @@
 		6759F2F61ACAD8D600D5A93B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				67C085F21ACC850F0044D0C1 /* Screen.png */,
 				6759F3031ACAD8D600D5A93B /* Images.xcassets */,
 			);
 			name = Resources;
@@ -279,6 +282,7 @@
 			files = (
 				6759F3021ACAD8D600D5A93B /* Main.storyboard in Resources */,
 				6759F3071ACAD8D600D5A93B /* LaunchScreen.xib in Resources */,
+				67C085F31ACC850F0044D0C1 /* Screen.png in Resources */,
 				6759F3041ACAD8D600D5A93B /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -465,10 +469,11 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = SharePlace/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -484,10 +489,11 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = SharePlace/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
